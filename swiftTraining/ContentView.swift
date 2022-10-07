@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var memo:String = ""
+    @State var memos:[String] = []
     var body: some View {
         VStack {
-            Image(systemName: "globe")
+            Image(systemName: "clock")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            DatePicker(selection: .constant(Date()), label: { /*@START_MENU_TOKEN@*/Text("Date")/*@END_MENU_TOKEN@*/ })
+            TextField("Memo", text: $memo)
+            Button("Submit"){
+                memos.append(memo)
+            }
         }
         .padding()
     }
